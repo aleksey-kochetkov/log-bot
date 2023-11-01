@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.ceki.fgiski2.logbot.helper.ApplicationHelper;
 import ru.ceki.fgiski2.logbot.dto.LogDto;
 
 @Component
