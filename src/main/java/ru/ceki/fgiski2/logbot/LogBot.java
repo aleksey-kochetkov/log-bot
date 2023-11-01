@@ -12,6 +12,11 @@ public class LogBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return ApplicationHelper.getPropertyLogBotBotToken();
     }
+    
+    @Override
+    public void onUpdateReceived(Update update) {
+        int putDebugPoinHere = -1;
+    }
 
     private void feedback(List<LogDto> list) {
         if (list.isEmpty()) {
