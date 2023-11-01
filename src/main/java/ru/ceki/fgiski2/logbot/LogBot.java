@@ -8,7 +8,12 @@ import ru.ceki.fgiski2.logbot.dto.LogDto;
 
 @Component
 public class LogBot extends TelegramLongPollingBot {
-    
+
+    @Override
+    public String getBotUsername() {
+        return ApplicationHelper.getPropertyLogBotBotUsername();
+    }
+
     @Override
     public String getBotToken() {
         return ApplicationHelper.getPropertyLogBotBotToken();
