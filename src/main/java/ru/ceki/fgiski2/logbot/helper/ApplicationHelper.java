@@ -16,4 +16,8 @@ public class ApplicationHelper {
     public static String getPropertyLogBotBotUsername() {
         return logBotBotUsername;
     }
+
+    public static String getPropertyLogBotBotToken() {
+        return logBotBotToken;
+    }
 }
