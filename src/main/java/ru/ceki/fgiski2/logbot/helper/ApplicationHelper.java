@@ -10,6 +10,7 @@ public class ApplicationHelper {
                         LoggerFactory.getLogger(ApplicationHelper.class);
     private static final String NAME = "log-bot.properties";
     private static String logBotBotUsername;
+    private static String logBotBotToken;
 
     static {
     }
