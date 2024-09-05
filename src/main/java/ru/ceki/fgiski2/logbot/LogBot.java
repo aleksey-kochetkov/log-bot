@@ -9,6 +9,10 @@ import ru.ceki.fgiski2.logbot.dto.LogDto;
 
 @Component
 public class LogBot extends TelegramLongPollingBot {
+    
+    public void setQueue(Queue<QueueElement> consumer) {
+        this.consumer = consumer;
+    }
 
     @Override
     public String getBotUsername() {
