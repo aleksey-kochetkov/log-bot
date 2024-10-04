@@ -7,8 +7,10 @@ import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.meta.generics.BotSession;
+import ru.ceki.fgiski2.logbot.helper.StringHelper;
 import ru.ceki.fgiski2.logbot.helper.NormalizedBlockingQueue;
 import ru.ceki.fgiski2.logbot.dto.QueueElement;
+import ru.ceki.fgiski2.logbot.dto.QueueElementImpl;
 import ru.ceki.fgiski2.logbot.dto.ShutdownElement;
 
 @Service
@@ -62,6 +64,30 @@ public class LogService {
         } catch (InterruptedException exception) {
             throw new RuntimeException(exception);
         }
+    }
+
+    private void processElement(QueueElementImpl element) {
+        if (this.elementException) {
+            ApplicationHelper.sleep(3000); // we don't want exceptions flood
+            elementException = false;
+        }
+        this.executor.execute(() -> {
+                try {
+                    logic.processElement(element);}
+                catch (Throwable throwable) {
+                    elementException = true;
+                    LOGGER.error(StringHelper.getStackTrace(throwable));
+                    if (!this.suppressLogBotSelfReport) {
+                        element.onProcessed(ObjectHelper.newLogDto(throwable));
+                    }}});
+    }
+
+    private void processShutdown(ShutdownElement element) {
+        this.executor.execute(() -> {
+                try {
+                    element.onProcessed();}
+                catch (Throwable throwable) {
+                    LOGGER.error(StringHelper.getStackTrace(throwable));}});
     }
 
     public void setBotSession(BotSession botSession) {
