@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.meta.generics.BotSession;
 import ru.ceki.fgiski2.logbot.helper.StringHelper;
+import ru.ceki.fgiski2.logbot.helper.ApplicationHelper;
 import ru.ceki.fgiski2.logbot.helper.NormalizedBlockingQueue;
 import ru.ceki.fgiski2.logbot.dto.QueueElement;
 import ru.ceki.fgiski2.logbot.dto.QueueElementImpl;
