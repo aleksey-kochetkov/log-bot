@@ -20,6 +20,8 @@ public class LogService {
     private BotSession botSession;
     private CountDownLatch running;
     private final Queue<QueueElement> queue = new NormalizedBlockingQueue();
+// отключение сообщений о собственных ошибках    
+    private boolean suppressLogBotSelfReport = false;
 
     public void start() {
         Runtime.getRuntime().addShutdownHook(new Thread(this::waitToShutdown));
@@ -89,6 +91,12 @@ public class LogService {
                     element.onProcessed();}
                 catch (Throwable throwable) {
                     LOGGER.error(StringHelper.getStackTrace(throwable));}});
+    }
+
+    private void stopBotSession() {
+        if (this.botSession.isRunning()) {
+            this.botSession.stop();
+        }
     }
 
     public void setBotSession(BotSession botSession) {

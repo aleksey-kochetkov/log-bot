@@ -15,6 +15,14 @@ public class ApplicationHelper {
     static {
     }
 
+    public static void sleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException exception) {
+            LOGGER.error(StringHelper.getStackTrace(exception));
+        }
+    }
+
     public static String getPropertyLogBotBotUsername() {
         return logBotBotUsername;
     }
