@@ -2,6 +2,9 @@ package ru.ceki.fgiski2.logbot;
 
 import java.util.Queue;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ThreadPoolExecutor;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,7 @@ public class LogService {
     private BotSession botSession;
     private CountDownLatch running;
     private final Queue<QueueElement> queue = new NormalizedBlockingQueue();
+    private final Executor executor = Executors.newCachedThreadPool();
 // отключение сообщений о собственных ошибках    
     private boolean suppressLogBotSelfReport = false;
 
