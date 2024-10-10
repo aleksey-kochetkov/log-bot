@@ -4,6 +4,7 @@ import java.util.Queue;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ThreadPoolExecutor;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -72,6 +73,8 @@ public class LogService {
             throw new RuntimeException(exception);
         }
     }
+
+    private boolean elementException = false;
 
     private void processElement(QueueElementImpl element) {
         if (this.elementException) {
