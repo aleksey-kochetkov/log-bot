@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.meta.generics.BotSession;
 import ru.ceki.fgiski2.logbot.helper.StringHelper;
+import ru.ceki.fgiski2.logbot.helper.ObjectHelper;
 import ru.ceki.fgiski2.logbot.helper.ApplicationHelper;
 import ru.ceki.fgiski2.logbot.helper.NormalizedBlockingQueue;
 import ru.ceki.fgiski2.logbot.dto.QueueElement;
@@ -25,6 +26,8 @@ public class LogService {
     private CountDownLatch running;
     private final Queue<QueueElement> queue = new NormalizedBlockingQueue();
     private final Executor executor = Executors.newCachedThreadPool();
+    @Autowired
+    private LogBotLogic logic;
 // отключение сообщений о собственных ошибках    
     private boolean suppressLogBotSelfReport = false;
 
