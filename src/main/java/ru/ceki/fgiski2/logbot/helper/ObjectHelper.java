@@ -6,6 +6,8 @@ import ru.ceki.fgiski2.logbot.model.Log;
 
 @Component
 public class ObjectHelper {
+    private static final String STR = "Пользователь не определён";
+
     public static LogDto newLogDto(Log log) {
         LogDto result = new LogDto();
         result.setId(log.getId());
