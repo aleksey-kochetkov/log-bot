@@ -19,6 +19,13 @@ public class ObjectHelper {
         return result;
     }
 
+    private static String calcUserStr(Long userId) {
+        return userRepository.findById(userId).map(user
+          -> user.getLastName() + ' ' + user.getFirstName()
+                               + ' ' + user.getMiddleName()
+                                             ).orElse(STR);
+    }
+
     public static LogDto newLogDto(Throwable throwable) {
         LogDto result = new LogDto();
         result.setCreatedAt(new Timestamp(System.currentTimeMillis()));
