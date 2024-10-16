@@ -7,6 +7,12 @@ import ru.ceki.fgiski2.logbot.model.Log;
 @Component
 public class ObjectHelper {
     private static final String STR = "Пользователь не определён";
+    private static UserRepository userRepository;
+
+    @Autowired
+    public void setUserRepository(UserRepository userRepositoryJpa) {
+        ObjectHelper.userRepository = userRepositoryJpa;
+    }
 
     public static LogDto newLogDto(Log log) {
         LogDto result = new LogDto();
