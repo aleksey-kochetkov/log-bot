@@ -3,6 +3,7 @@ package ru.ceki.fgiski2.logbot.helper;
 import org.springframework.stereotype.Component;
 import ru.ceki.fgiski2.logbot.dto.LogDto;
 import ru.ceki.fgiski2.logbot.model.Log;
+import ru.ceki.fgiski2.logbot.repository.UserRepository;
 
 @Component
 public class ObjectHelper {
