@@ -1,5 +1,6 @@
 package ru.ceki.fgiski2.logbot.helper;
 
+import java.sql.Timestamp;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.ceki.fgiski2.logbot.dto.LogDto;
