@@ -32,6 +32,10 @@ public class LogBot extends TelegramLongPollingBot {
         int putDebugPoinHere = -1;
     }
 
+    public void initDataSearch() {
+        this.consumer.add(new QueueElementImpl(this::feedback));
+    }
+
     private void feedback(List<LogDto> list) {
         if (list.isEmpty()) {
         } else {
