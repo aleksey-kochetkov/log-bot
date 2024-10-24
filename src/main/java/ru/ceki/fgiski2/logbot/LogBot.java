@@ -7,6 +7,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import ru.ceki.fgiski2.logbot.helper.ApplicationHelper;
 import ru.ceki.fgiski2.logbot.dto.QueueElement;
+import ru.ceki.fgiski2.logbot.dto.QueueElementImpl;
 import ru.ceki.fgiski2.logbot.dto.LogDto;
 
 @Component
