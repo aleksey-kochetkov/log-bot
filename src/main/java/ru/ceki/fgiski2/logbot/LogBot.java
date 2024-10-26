@@ -13,6 +13,11 @@ import ru.ceki.fgiski2.logbot.dto.LogDto;
 @Component
 public class LogBot extends TelegramLongPollingBot {
     private Queue<QueueElement> consumer;
+
+    public LogBot() {
+        ((ShutdownElement)QueueElement.SHUTDOWN)
+                                    .setRunnable(this::shutdownFeedback);
+    }
     
     public void setQueue(Queue<QueueElement> consumer) {
         this.consumer = consumer;
