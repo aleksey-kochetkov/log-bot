@@ -48,4 +48,11 @@ public class LogBot extends TelegramLongPollingBot {
         } else {
         }
     }
+
+    private void shutdownFeedback() {
+        this.sendText(ApplicationHelper.getPropertyLogBotChatId(),
+         String.format("Дата: %s%nПользователь: %s%nОписание ошибки: %s",
+                    new Timestamp(System.currentTimeMillis()).toString(),
+                                                 "Log Bot", "SHUTDOWN"));
+    }
 }
