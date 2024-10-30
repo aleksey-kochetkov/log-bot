@@ -2,6 +2,7 @@ package ru.ceki.fgiski2.logbot;
 
 import java.util.Queue;
 import java.util.List;
+import java.sql.Timestamp;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -46,6 +47,8 @@ public class LogBot extends TelegramLongPollingBot {
     private void feedback(List<LogDto> list) {
         if (list.isEmpty()) {
         } else {
+            for (LogDto l : list) {
+            }
         }
     }
 

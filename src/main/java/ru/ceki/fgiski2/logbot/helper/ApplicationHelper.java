@@ -30,4 +30,8 @@ public class ApplicationHelper {
     public static String getPropertyLogBotBotToken() {
         return logBotBotToken;
     }
+
+    public static String getPropertyLogBotChatId() {
+        return logBotChatId;
+    }
 }
