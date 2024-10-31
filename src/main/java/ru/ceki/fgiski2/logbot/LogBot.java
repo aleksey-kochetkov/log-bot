@@ -44,6 +44,17 @@ public class LogBot extends TelegramLongPollingBot {
         this.consumer.add(new QueueElementImpl(this::feedback));
     }
 
+    public void sendText(String chatId, String what) {
+        SendMessage sm = SendMessage.builder()
+                    .chatId(chatId) //Who are we sending a message to
+                    .text(what).build();    //Message content
+        try {
+            this.execute(sm);
+        } catch (TelegramApiException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
     private void feedback(List<LogDto> list) {
         if (list.isEmpty()) {
         } else {
