@@ -11,6 +11,7 @@ public class ApplicationHelper {
     private static final String NAME = "log-bot.properties";
     private static String logBotBotUsername;
     private static String logBotBotToken;
+    private static String logBotChatId;
 
     static {
     }
