@@ -4,4 +4,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LogBotLogicImpl implements LogBotLogic {
+    @Override
+    public synchronized void processElement(QueueElementImpl element) {
+        Long currentId = ApplicationHelper.getPropertyLogBotCurrentId();
+        List<LogDto> list = new ArrayList<>();
+        for (Log l : this.logRepository.findByIdGreaterThan(currentId)) {
+            list.add(ObjectHelper.newLogDto(l));
+            if (currentId < l.getId()) {
+                currentId = l.getId();
+            }
+        }
+        element.onProcessed(list);
+    }
 }
