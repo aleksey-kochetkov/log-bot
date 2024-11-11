@@ -1,6 +1,7 @@
 package ru.ceki.fgiski2.logbot;
 
 import org.springframework.stereotype.Service;
+import ru.ceki.fgiski2.logbot.dto.QueueElementImpl;
 
 @Service
 public class LogBotLogicImpl implements LogBotLogic {
