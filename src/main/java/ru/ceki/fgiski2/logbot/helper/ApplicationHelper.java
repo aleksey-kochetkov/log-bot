@@ -35,4 +35,8 @@ public class ApplicationHelper {
     public static String getPropertyLogBotChatId() {
         return logBotChatId;
     }
+
+    public static long getPropertyLogBotCurrentId() {
+        return logBotCurrentId;
+    }
 }
