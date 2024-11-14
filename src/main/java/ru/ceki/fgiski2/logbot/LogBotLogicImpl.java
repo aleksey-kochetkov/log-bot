@@ -1,5 +1,6 @@
 package ru.ceki.fgiski2.logbot;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.ceki.fgiski2.logbot.helper.ApplicationHelper;
 import ru.ceki.fgiski2.logbot.dto.QueueElementImpl;
