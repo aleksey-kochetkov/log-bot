@@ -12,6 +12,7 @@ public class ApplicationHelper {
     private static String logBotBotUsername;
     private static String logBotBotToken;
     private static String logBotChatId;
+    private static Long logBotCurrentId;
 
     static {
     }
