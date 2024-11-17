@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.ceki.fgiski2.logbot.helper.ApplicationHelper;
 import ru.ceki.fgiski2.logbot.dto.QueueElementImpl;
+import ru.ceki.fgiski2.logbot.dto.LogDto;
 
 @Service
 public class LogBotLogicImpl implements LogBotLogic {
