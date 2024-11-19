@@ -9,11 +9,14 @@ import ru.ceki.fgiski2.logbot.dto.LogDto;
 
 @Service
 public class LogBotLogicImpl implements LogBotLogic {
+    @Autowired
+    private LogRepository logRepository;
+
     @Override
     public synchronized void processElement(QueueElementImpl element) {
         Long currentId = ApplicationHelper.getPropertyLogBotCurrentId();
         List<LogDto> list = new ArrayList<>();
-        for (Log l : this.logRepository.findByIdGreaterThan(currentId)) {
+        for (Log l : logRepository.findByIdGreaterThan(currentId)) {
             list.add(ObjectHelper.newLogDto(l));
             if (currentId < l.getId()) {
                 currentId = l.getId();
