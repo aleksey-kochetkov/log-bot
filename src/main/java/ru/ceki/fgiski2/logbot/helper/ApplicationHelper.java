@@ -3,6 +3,7 @@ package ru.ceki.fgiski2.logbot.helper;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
+import org.springframework.context.ApplicationContext;
 
 @Component
 public class ApplicationHelper {
@@ -15,6 +16,11 @@ public class ApplicationHelper {
     private static Long logBotCurrentId;
 
     static {
+    }
+
+    public static void init(ApplicationContext ctx) {
+        init();
+        setApplicationContext_internal(ctx);
     }
 
     public static void sleep(long millis) {
