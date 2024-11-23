@@ -1,5 +1,6 @@
 package ru.ceki.fgiski2.logbot.helper;
 
+import java.util.Properties;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,24 @@ public class ApplicationHelper {
     private static Long logBotCurrentId;
 
     static {
+    }
+
+    public static void init() {
+        Properties file = new Properties();
+        try (FileInputStream in = new FileInputStream(NAME)) {
+            file.load(in);
+            logBotCurrentId = Long.parseLong(file.getProperty("log-bot.current-id"));
+        } catch (Throwable exception) {
+            LOGGER.error(StringHelper.getStackTrace(exception));
+            try (FileInputStream in = new FileInputStream(
+                                     System.getProperty("java.io.tmpdir")
+                                          + File.separatorChar + NAME)) {
+                file.load(in);
+                logBotCurrentId = Long.parseLong(file.getProperty("log-bot.current-id"));
+            } catch (Throwable exc) {
+                LOGGER.error(StringHelper.getStackTrace(exc));
+            }
+        }
     }
 
     public static void init(ApplicationContext ctx) {
