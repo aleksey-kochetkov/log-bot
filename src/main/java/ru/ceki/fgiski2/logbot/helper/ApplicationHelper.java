@@ -1,5 +1,7 @@
 package ru.ceki.fgiski2.logbot.helper;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Properties;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
