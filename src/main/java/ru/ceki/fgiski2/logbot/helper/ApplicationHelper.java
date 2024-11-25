@@ -25,14 +25,16 @@ public class ApplicationHelper {
         Properties file = new Properties();
         try (FileInputStream in = new FileInputStream(NAME)) {
             file.load(in);
-            logBotCurrentId = Long.parseLong(file.getProperty("log-bot.current-id"));
+            logBotCurrentId =
+                  Long.parseLong(file.getProperty("log-bot.current-id"));
         } catch (Throwable exception) {
             LOGGER.error(StringHelper.getStackTrace(exception));
             try (FileInputStream in = new FileInputStream(
                                      System.getProperty("java.io.tmpdir")
                                           + File.separatorChar + NAME)) {
                 file.load(in);
-                logBotCurrentId = Long.parseLong(file.getProperty("log-bot.current-id"));
+                logBotCurrentId =
+                  Long.parseLong(file.getProperty("log-bot.current-id"));
             } catch (Throwable exc) {
                 LOGGER.error(StringHelper.getStackTrace(exc));
             }
@@ -42,6 +44,39 @@ public class ApplicationHelper {
     public static void init(ApplicationContext ctx) {
         init();
         setApplicationContext_internal(ctx);
+    }
+
+    private static
+            void setApplicationContext_internal(ApplicationContext ctx) {
+        logBotBotUsername = ctx.getEnvironment()
+                          .getProperty("log-bot.bot-username");
+        logBotBotToken = ctx.getEnvironment()
+                             .getProperty("log-bot.bot-token");
+        logBotChatId = ctx.getEnvironment()
+                               .getProperty("log-bot.chat-id");
+        try {
+            logBotDataSearchInterval = Integer.parseInt(
+                    ctx.getEnvironment()
+                           .getProperty("log-bot.data-search-interval"));
+        } catch (Exception exception) {
+            LOGGER.error(StringHelper.getStackTrace(exception));
+        }
+        try {
+            logBotSendingInterval = Integer.parseInt(
+                    ctx.getEnvironment()
+                               .getProperty("log-bot.sending-interval"));
+        } catch (Exception exception) {
+            LOGGER.error(StringHelper.getStackTrace(exception));
+        }
+        if (logBotCurrentId == null) {
+            try {
+                logBotCurrentId = Long.parseLong(ctx.getEnvironment()
+                                 .getProperty("log-bot.current-id"));
+            } catch (NumberFormatException exception) {
+                LOGGER.error(StringHelper.getStackTrace(exception));
+                logBotCurrentId = Long.MIN_VALUE;
+            }
+        }
     }
 
     public static void sleep(long millis) {
