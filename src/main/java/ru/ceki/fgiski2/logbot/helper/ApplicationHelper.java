@@ -17,6 +17,7 @@ public class ApplicationHelper {
     private static String logBotBotToken;
     private static String logBotChatId;
     private static int logBotDataSearchInterval = 1000;
+    private static int logBotSendingInterval = 5000;
     private static Long logBotCurrentId;
 
     static {
