@@ -2,11 +2,13 @@ package ru.ceki.fgiski2.logbot.helper;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Objects;
 import java.util.Properties;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Component
 public class ApplicationHelper {
@@ -21,6 +23,7 @@ public class ApplicationHelper {
     private static Long logBotCurrentId;
 
     static {
+        init();
     }
 
     public static void init() {
@@ -79,6 +82,11 @@ public class ApplicationHelper {
                 logBotCurrentId = Long.MIN_VALUE;
             }
         }
+    }
+
+    @Autowired
+    public void setApplicationContext(ApplicationContext ctx) {
+        setApplicationContext_internal(ctx);
     }
 
     public static void sleep(long millis) {
